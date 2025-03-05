@@ -31,7 +31,6 @@ const Signup = () => {
       navigate("/");
     }, import.meta.env.VITE_APP_DELAY_REDIRECTION);
   }
-
   return (
     <div className="bg-white m-4 p-4 flex flex-col justify-center items-center">
       {state.success ? (
@@ -99,11 +98,8 @@ const Signup = () => {
           >
             Signup
           </button>
-          {state?.result?.message === "Missing parameters" && (
-            <span className="text-red-600">Missing parameters...</span>
-          )}
-          {state?.result?.message === "Inputs cannot be empty" && (
-            <span className="text-red-600">Inputs cannot be empty...</span>
+          {state?.result?.message && (
+            <span className="text-red-600">{state.result.message}</span>
           )}
         </form>
       )}
