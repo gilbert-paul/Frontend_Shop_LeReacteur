@@ -7,7 +7,7 @@ import {
   useState,
 } from "react";
 
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 
 const AuthContext = createContext<IAuthContext | null>(null);
 
@@ -68,6 +68,5 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
     </AuthContext.Provider>
   );
 };
-
 
 export { AuthProvider, AuthContext };

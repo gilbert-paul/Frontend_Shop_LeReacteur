@@ -1,8 +1,8 @@
 interface IAuth {
   id: string;
   token: string;
-  admin:boolean;
-  message?:string,
+  admin: boolean;
+  message?: string;
 }
 
 interface IAuthContext {
@@ -12,4 +12,4 @@ interface IAuthContext {
   removeAuth: () => void;
 }
 
-export type {IAuth, IAuthContext}
+export type { IAuth, IAuthContext };

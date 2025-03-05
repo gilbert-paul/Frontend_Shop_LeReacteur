@@ -9,7 +9,7 @@ const Input = ({
   disabled,
   value,
   autoFocus,
-  className
+  className,
 }: {
   placeholder?: string;
   type: string;
@@ -19,7 +19,7 @@ const Input = ({
   disabled?: boolean;
   value?: string;
   autoFocus?: boolean;
-  className?:string;
+  className?: string;
 }) => {
   return (
     <input

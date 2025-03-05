@@ -55,7 +55,7 @@ const Payment = () => {
         address: address,
         authToken: auth.token,
       });
-      setMessage('proccess');
+      setMessage("proccess");
       cartDispatch({ type: "resetCart" });
     }
   };
@@ -98,15 +98,15 @@ const Payment = () => {
             >
               Payment
             </button>
-            {!address && typeof address === "string" && cartState.products.length >0 && (
-              <span className="text-red-600">
-                Address input cannot be empty...
-              </span>
-            )}
-            {cartState.products.length === 0 && message !== 'proccess' && (
-              <span className="text-red-600">
-                You need products to pay...
-              </span>
+            {!address &&
+              typeof address === "string" &&
+              cartState.products.length > 0 && (
+                <span className="text-red-600">
+                  Address input cannot be empty...
+                </span>
+              )}
+            {cartState.products.length === 0 && message !== "proccess" && (
+              <span className="text-red-600">You need products to pay...</span>
             )}
           </div>
         </div>

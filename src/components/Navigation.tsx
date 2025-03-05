@@ -11,11 +11,11 @@ import { useAuthContext } from "../contexts/Auth/useAuthContext";
 const Navigation = ({
   className,
   isListView,
-  onClick
+  onClick,
 }: {
   className: string;
   isListView?: boolean;
-  onClick?:()=>void
+  onClick?: () => void;
 }) => {
   const { auth, removeAuth } = useAuthContext();
   const navigate = useNavigate();
@@ -27,7 +27,8 @@ const Navigation = ({
             ? "flex-row gap-2 items-center justify-start hover:text-primary"
             : "flex-col justify-center items-center hover:text-secondary"
         }`}
-        onClick={onClick} to="/"
+        onClick={onClick}
+        to="/"
       >
         <FaHome />
         Home
@@ -38,7 +39,8 @@ const Navigation = ({
             ? "flex-row gap-2 items-center justify-start hover:text-primary"
             : "flex-col justify-center items-center hover:text-secondary"
         }`}
-        onClick={onClick} to="/products"
+        onClick={onClick}
+        to="/products"
       >
         <FaGift />
         Products
@@ -49,7 +51,8 @@ const Navigation = ({
             ? "flex-row gap-2 items-center justify-start hover:text-primary"
             : "flex-col justify-center items-center hover:text-secondary"
         }`}
-        onClick={onClick} to="/cart"
+        onClick={onClick}
+        to="/cart"
       >
         <FaCartShopping /> <span>Cart </span>
       </Link>
@@ -60,7 +63,8 @@ const Navigation = ({
               ? "flex-row gap-2 items-center justify-start hover:text-primary"
               : "flex-col justify-center items-center hover:text-secondary"
           }`}
-          onClick={onClick} to="/payment"
+          onClick={onClick}
+          to="/payment"
         >
           <FaCircleDollarToSlot />
           <span>Payment</span>
@@ -73,7 +77,8 @@ const Navigation = ({
               ? "flex-row gap-2 items-center justify-start hover:text-primary"
               : "flex-col justify-center items-center hover:text-secondary"
           }`}
-          onClick={onClick} to="/admin"
+          onClick={onClick}
+          to="/admin"
         >
           <FaUnlockKeyhole />
           <span>Admin</span>
@@ -87,7 +92,8 @@ const Navigation = ({
                 ? "flex-row gap-2 items-center justify-start hover:text-primary"
                 : "flex-col justify-center items-center hover:text-secondary"
             }`}
-            onClick={onClick} to="/users/signup"
+            onClick={onClick}
+            to="/users/signup"
           >
             <FaUserPlus />
             Sign Up
@@ -98,7 +104,8 @@ const Navigation = ({
                 ? "flex-row gap-2 items-center justify-start hover:text-primary"
                 : "flex-col justify-center items-center hover:text-secondary"
             }`}
-            onClick={onClick} to="/users/login"
+            onClick={onClick}
+            to="/users/login"
           >
             <FaUserLock /> Login
           </Link>

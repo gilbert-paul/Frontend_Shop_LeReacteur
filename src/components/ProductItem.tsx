@@ -123,25 +123,27 @@ const ProductItem = ({ product }: { product: IProduct }) => {
           <span className="italic">Cart quantity:</span>
 
           <div className="flex z-20 gap-2 w-full justify-center bottom-4 transition-all duration-300">
-            {size !== 'lg' && <div
-              className={`bg-white rounded-full w-8 h-8 flex justify-center items-center hover:text-secondary ${
-                hasThisProductInCart && "group-hover:cursor-pointer"
-              }`}
-              onClick={() => {
-                if (hasThisProductInCart) {
-                  cartDispatch({
-                    type: "removeProduct",
-                    payload: { product: product },
-                  });
-                }
-              }}
-            >
-              {hasThisProductInCart ? (
-                <FaMinus size={12} />
-              ) : (
-                <FaMinus size={12} opacity={0.2} className="text-grey" />
-              )}
-            </div>}
+            {size !== "lg" && (
+              <div
+                className={`bg-white rounded-full w-8 h-8 flex justify-center items-center hover:text-secondary ${
+                  hasThisProductInCart && "group-hover:cursor-pointer"
+                }`}
+                onClick={() => {
+                  if (hasThisProductInCart) {
+                    cartDispatch({
+                      type: "removeProduct",
+                      payload: { product: product },
+                    });
+                  }
+                }}
+              >
+                {hasThisProductInCart ? (
+                  <FaMinus size={12} />
+                ) : (
+                  <FaMinus size={12} opacity={0.2} className="text-grey" />
+                )}
+              </div>
+            )}
             <div
               className="bg-white rounded-full w-8 h-8 flex justify-center font-bold items-center text-secondary
             "
@@ -150,26 +152,28 @@ const ProductItem = ({ product }: { product: IProduct }) => {
                 {hasThisProductInCart ? hasThisProductInCart.quantity : 0}
               </span>
             </div>
-            {size !== 'lg' && <div
-              className={`bg-white rounded-full w-8 h-8 flex justify-center items-center hover:text-secondary ${
-                hasThisProductInCart?.quantity !== product.stock &&
-                "group-hover:cursor-pointer"
-              }`}
-              onClick={() => {
-                if (hasThisProductInCart?.quantity !== product.stock) {
-                  cartDispatch({
-                    type: "addProduct",
-                    payload: { product: product },
-                  });
-                }
-              }}
-            >
-              {hasThisProductInCart?.quantity !== product.stock ? (
-                <FaPlus size={12} />
-              ) : (
-                <FaPlus size={12} opacity={0.2} className="text-grey" />
-              )}
-            </div>}
+            {size !== "lg" && (
+              <div
+                className={`bg-white rounded-full w-8 h-8 flex justify-center items-center hover:text-secondary ${
+                  hasThisProductInCart?.quantity !== product.stock &&
+                  "group-hover:cursor-pointer"
+                }`}
+                onClick={() => {
+                  if (hasThisProductInCart?.quantity !== product.stock) {
+                    cartDispatch({
+                      type: "addProduct",
+                      payload: { product: product },
+                    });
+                  }
+                }}
+              >
+                {hasThisProductInCart?.quantity !== product.stock ? (
+                  <FaPlus size={12} />
+                ) : (
+                  <FaPlus size={12} opacity={0.2} className="text-grey" />
+                )}
+              </div>
+            )}
           </div>
         </div>
         <div className="w-full flex justify-center items-center">

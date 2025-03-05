@@ -16,8 +16,7 @@ const login = async (
         error: false,
         result: { id: "", token: "", admin: false, message: "inputs empty" },
       };
-    }
-    else if (result?.id) {
+    } else if (result?.id) {
       return { ...previousState, success: true, error: false, result };
     } else {
       return { ...previousState, success: false, result };

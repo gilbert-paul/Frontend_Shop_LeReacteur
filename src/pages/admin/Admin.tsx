@@ -14,7 +14,7 @@ const Admin = () => {
   const { auth } = useAuthContext();
   const { data, isLoading, error } = useOrdersQuery(auth?.token || "");
 
-  const [optimisticOrder, addOptimisticOrder] = useOptimistic(
+  const [optimisticOrders, addOptimisticOrder] = useOptimistic(
     data || [],
     (state, newData: IOrder[] | never[]) => {
       void state;
@@ -32,8 +32,8 @@ const Admin = () => {
     if (destination.index === source.index) {
       return;
     }
-    if (optimisticOrder) {
-      const updatedOrders = optimisticOrder;
+    if (optimisticOrders) {
+      const updatedOrders = optimisticOrders;
       const [removedOrder] = updatedOrders.splice(source.index, 1);
       updatedOrders.splice(destination.index, 0, removedOrder);
       startTransition(() => {
@@ -52,9 +52,12 @@ const Admin = () => {
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="flex flex-col gap-4">
         <div className="text-secondary text-xl">Admin panel:</div>
-        {optimisticOrder.length === 0 && (
-          <div className="italic">There is not product in your cart...</div>
-        )}
+        {!optimisticOrders ||
+          (optimisticOrders.length === 0 && (
+            <div className="italic text-secondary">
+              There is not order in your shop...
+            </div>
+          ))}
         <Droppable droppableId="1">
           {(provided) => {
             return (
@@ -63,8 +66,8 @@ const Admin = () => {
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
-                {optimisticOrder &&
-                  optimisticOrder.map((order, index) => {
+                {optimisticOrders &&
+                  optimisticOrders.map((order, index) => {
                     return (
                       <AdminOrder
                         key={order._id}

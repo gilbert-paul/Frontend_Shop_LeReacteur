@@ -18,20 +18,19 @@ function App() {
       <Header />
       <div className="bg-black pt-6 absolute top-20 right-0 left-0 min-h-[calc(100%-80px)] flex flex-col justify-between">
         <div className="px-6 pb-6">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/users/signup" element={<Signup />} />
-          <Route path="/users/login" element={<Login />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
-          {auth?.token && <Route path="/payment" element={<Payment />} />}
-          {auth?.admin && <Route path="/admin" element={<Admin />} />}
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/users/signup" element={<Signup />} />
+            <Route path="/users/login" element={<Login />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<Product />} />
+            <Route path="/cart" element={<Cart />} />
+            {auth?.token && <Route path="/payment" element={<Payment />} />}
+            {auth?.admin && <Route path="/admin" element={<Admin />} />}
+          </Routes>
         </div>
-      <Footer />
+        <Footer />
       </div>
-
     </Router>
   );
 }

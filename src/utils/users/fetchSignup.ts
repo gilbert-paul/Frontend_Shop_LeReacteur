@@ -2,9 +2,7 @@ import axios, { AxiosError } from "axios";
 import { IUser } from "../../interfaces/IUser";
 import { IAuth } from "../../interfaces/IAuth";
 
-const fetchSignup = async (
-  userInformations: IUser,
-) => {
+const fetchSignup = async (userInformations: IUser) => {
   const { password, email, username } = userInformations;
   if (!password && !email && !username) {
     return {
@@ -12,14 +10,15 @@ const fetchSignup = async (
       token: "",
       admin: false,
       message: "Inputs cannot be empty",
-    };  }
+    };
+  }
   try {
     const result = await axios.post(
       `${import.meta.env.VITE_APP_BACK_URL}/user/signup`,
       {
         password,
         email,
-        username
+        username,
       }
     );
     return {

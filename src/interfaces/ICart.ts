@@ -8,8 +8,8 @@ interface ICartProduct {
 }
 
 interface ICartContext {
-  cartDispatch:Dispatch<ICartReducerAction>,
-  cartState:{products:ICartProduct[],total:number}
+  cartDispatch: Dispatch<ICartReducerAction>;
+  cartState: { products: ICartProduct[]; total: number };
 }
 
 export type { ICartProduct, ICartContext };

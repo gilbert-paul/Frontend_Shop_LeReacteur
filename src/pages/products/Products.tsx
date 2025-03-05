@@ -13,7 +13,7 @@ const Products = () => {
   const { data, isLoading, error } = useProductsQuery(searchWithDelay);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!data || data.length === 0 && search.length > 1) {
+    if (!data || (data.length === 0 && search.length > 1)) {
       if (e.currentTarget.value.length > search.length) {
         return;
       }
@@ -35,14 +35,14 @@ const Products = () => {
           type="text"
           name="search"
           onChange={handleSearch}
-          value={search || ''}
+          value={search || ""}
           autoFocus
           placeholder="Search..."
-          className='text-white placeholder:text-white bg-black'
+          className="text-white placeholder:text-white bg-black"
         ></Input>
         <FaCircleXmark
-        color="white"
-        className="hover:cursor-pointer"
+          color="white"
+          className="hover:cursor-pointer"
           onClick={() => {
             setSearch("");
           }}
@@ -50,7 +50,9 @@ const Products = () => {
       </div>
       <div className="flex gap-4 flex-wrap py-4">
         {!data || data.length === 0 ? (
-          <div className="text-primary">There is not product here with this search...</div>
+          <div className="text-primary">
+            There is not product here with this search...
+          </div>
         ) : (
           data.map((product) => {
             return <ProductItem key={product._id} product={product} />;

@@ -2,7 +2,7 @@ import { IAuth } from "../interfaces/IAuth";
 import { fetchSignup } from "../utils/users/fetchSignup";
 
 const signup = async (
-  previousState: { success: boolean; error: boolean,result:IAuth | null},
+  previousState: { success: boolean; error: boolean; result: IAuth | null },
   formData: FormData
 ) => {
   const password = formData.get("password");
@@ -13,15 +13,15 @@ const signup = async (
     typeof username === "string" &&
     typeof email === "string"
   ) {
-      const result = await fetchSignup({ password, email,username });
-      if (result?.id) {
-        return { ...previousState, success: true, error: false, result };
-      } else {
-        return { ...previousState, success: false,result };
-      }
+    const result = await fetchSignup({ password, email, username });
+    if (result?.id) {
+      return { ...previousState, success: true, error: false, result };
     } else {
-      return { ...previousState, success: false, error: true };
+      return { ...previousState, success: false, result };
     }
+  } else {
+    return { ...previousState, success: false, error: true };
+  }
 };
 
 export { signup };

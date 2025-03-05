@@ -18,7 +18,7 @@ const Header = () => {
       <Navigation className="hidden md:flex gap-4 justify-center items-center" />
       <div className="flex md:hidden gap-4 justify-center items-center relative">
         <button
-        className="py-2 hover:cursor-pointer"
+          className="py-2 hover:cursor-pointer"
           onClick={() => {
             setMenuIsVisible((prev) => !prev);
           }}
@@ -27,7 +27,13 @@ const Header = () => {
         </button>
         {menuIsVisible && (
           <div className="bg-secondary absolute p-4 right-0 top-full">
-            <Navigation onClick={()=>{setMenuIsVisible(false)}} className="flex-col gap-4 justify-center items-center" isListView={true} />
+            <Navigation
+              onClick={() => {
+                setMenuIsVisible(false);
+              }}
+              className="flex-col gap-4 justify-center items-center"
+              isListView={true}
+            />
           </div>
         )}
       </div>

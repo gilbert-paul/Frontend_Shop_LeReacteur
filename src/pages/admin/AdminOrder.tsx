@@ -32,7 +32,6 @@ const AdminOrder = ({ order, index }: { order: IOrder; index: number }) => {
     },
   });
 
-
   const toggleDelivery = async (orderId: string) => {
     if (auth) {
       toggleDeliveryOrderMutation.mutate({
@@ -72,7 +71,9 @@ const AdminOrder = ({ order, index }: { order: IOrder; index: number }) => {
                       <span className="italic">{product.product.title}</span>
                     </div>
                     <div>
-                      <span className="text-secondary font-bold">Quantity:</span>
+                      <span className="text-secondary font-bold">
+                        Quantity:
+                      </span>
                       <span className="italic">{product.quantity}</span>
                     </div>
                   </div>

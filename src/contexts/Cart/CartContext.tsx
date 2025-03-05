@@ -6,25 +6,35 @@ import { ICartReducerAction } from "../../interfaces/ICartReducerAction";
 const CartContext = createContext<ICartContext | null>(null);
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const cartReducer = (state: {products:ICartProduct[], total:number}, action: ICartReducerAction): {products:ICartProduct[], total:number} => {
+  const cartReducer = (
+    state: { products: ICartProduct[]; total: number },
+    action: ICartReducerAction
+  ): { products: ICartProduct[]; total: number } => {
     const { type, payload } = action;
     switch (type) {
       case "addProduct":
-        if(payload){
+        if (payload) {
           return addProduct(payload.product, state);
-        } else {return state}
+        } else {
+          return state;
+        }
       case "removeProduct":
-        if(payload){
+        if (payload) {
           return removeProduct(payload.product, state);
-        } else {return state}
-      case 'resetCart':
-        return {products:[],total:0}
+        } else {
+          return state;
+        }
+      case "resetCart":
+        return { products: [], total: 0 };
       default:
         return state;
     }
   };
 
-  const [cartState, cartDispatch] = useReducer(cartReducer, { products: [], total: 0 });
+  const [cartState, cartDispatch] = useReducer(cartReducer, {
+    products: [],
+    total: 0,
+  });
 
   function addProduct(
     product: IProduct,
@@ -81,14 +91,12 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         total: Math.round((state.total - product.price) * 100) / 100,
       };
     } else {
-      return { products: [], total: 0 }
+      return { products: [], total: 0 };
     }
   }
 
   return (
-    <CartContext.Provider
-      value={{ cartDispatch, cartState }}
-    >
+    <CartContext.Provider value={{ cartDispatch, cartState }}>
       {children}
     </CartContext.Provider>
   );
