@@ -9,6 +9,7 @@ const Input = ({
   disabled,
   value,
   autoFocus,
+  className
 }: {
   placeholder?: string;
   type: string;
@@ -17,19 +18,20 @@ const Input = ({
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   value?: string;
-  autoFocus?: boolean
+  autoFocus?: boolean;
+  className?:string;
 }) => {
   return (
     <input
+      className={`border-secondary border-b-2 bg-transparent focus-visible:outline-0 focus:border-primary ${className}`}
       autoFocus={autoFocus}
-      className="border"
       type={type ?? "text"}
       placeholder={placeholder}
       disabled={disabled}
       name={name}
       checked={checked}
       onChange={onChange}
-      {...(typeof value === 'string' && { value })}
+      {...(typeof value === "string" && { value })}
     />
   );
 };

@@ -12,7 +12,7 @@ import { ICartProduct } from "../../interfaces/ICart";
 const Payment = () => {
   const { cartState, cartDispatch } = useCartContext();
   const { auth } = useAuthContext();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [address, setAddress] = useState<string | null>(null);
   const [message, setMessage] = useState("");
@@ -50,40 +50,64 @@ const Payment = () => {
 
   const handleSubmit = () => {
     if (auth?.token && address && cartState.products.length > 0) {
-        createOrderMutation.mutate({
-          cart: cartState,
-          address: address,
-          authToken: auth.token,
-        });
-        setMessage(message);
-        cartDispatch({ type: "resetCart" });
+      createOrderMutation.mutate({
+        cart: cartState,
+        address: address,
+        authToken: auth.token,
+      });
+      setMessage('proccess');
+      cartDispatch({ type: "resetCart" });
     }
   };
 
-  if(message){
-    return <div>
-      {message}
-      <button onClick={()=>{setMessage('');navigate('/products')}}>See all products</button>
-    </div>
+  if (message) {
+    return (
+      <div className="text-primary flex justify-center items-center flex-col gap-4">
+        {message}
+        <button
+          className="text-black bg-primary border-1 py-3 px-4 hover:cursor-pointer hover:bg-gold hover:opacity-80"
+          onClick={() => {
+            navigate("/products");
+          }}
+        >
+          See all products
+        </button>
+      </div>
+    );
   }
   return (
-    <div>
-      Payment
+    <div className="">
       {message || (
-        <div className="flex">
-          <div className="w-full">
+        <div className="flex flex-col-reverse gap-4 xl:flex-row">
+          <div className="xl:w-[75%]">
             <Cart isPaymentView={true}></Cart>
           </div>
-          <div className="w-[20%]">
-            <div>Adress:</div>
+          <div className="flex flex-col gap-4 justify-start items-start xl:items-center bg-secondary p-4">
+            <div className="w-full font-bold">Add your address payment:</div>
             <Input
               type="text"
               placeholder="Address"
               name="address"
               onChange={handleAddress}
+              className="border-b-black"
             />
-            <button disabled={!address} onClick={handleSubmit}>Payment</button>
-            {!address && typeof address === 'string' && <div>Input is empty... !</div>}
+            <button
+              className="bg-primary border-1 py-2.5 px-4 hover:cursor-pointer hover:bg-primary hover:opacity-80 disabled:opacity-50"
+              disabled={!address || cartState.products.length === 0}
+              onClick={handleSubmit}
+            >
+              Payment
+            </button>
+            {!address && typeof address === "string" && cartState.products.length >0 && (
+              <span className="text-red-600">
+                Address input cannot be empty...
+              </span>
+            )}
+            {cartState.products.length === 0 && message !== 'proccess' && (
+              <span className="text-red-600">
+                You need products to pay...
+              </span>
+            )}
           </div>
         </div>
       )}

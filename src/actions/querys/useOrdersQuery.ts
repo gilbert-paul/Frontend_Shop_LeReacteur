@@ -10,7 +10,7 @@ const useOrdersQuery = (authToken: string) =>
         `${import.meta.env.VITE_APP_BACK_URL}/orders`,
         { headers: { Authorization: "Bearer " + authToken } }
       );
-      return data;
+      return data.reverse();
     },
     staleTime: 1000 * 60,
   });

@@ -30,24 +30,27 @@ const Products = () => {
   }
   return (
     <div>
-      Products :
-      <div className="flex gap-4 items-center">
+      <div className="flex gap-4 items-center pb-2">
         <Input
           type="text"
           name="search"
           onChange={handleSearch}
           value={search || ''}
           autoFocus
+          placeholder="Search..."
+          className='text-white placeholder:text-white bg-black'
         ></Input>
         <FaCircleXmark
+        color="white"
+        className="hover:cursor-pointer"
           onClick={() => {
             setSearch("");
           }}
         ></FaCircleXmark>
       </div>
-      <div className="flex gap-4 flex-wrap p-4">
+      <div className="flex gap-4 flex-wrap py-4">
         {!data || data.length === 0 ? (
-          <div>There is not product here</div>
+          <div className="text-primary">There is not product here with this search...</div>
         ) : (
           data.map((product) => {
             return <ProductItem key={product._id} product={product} />;

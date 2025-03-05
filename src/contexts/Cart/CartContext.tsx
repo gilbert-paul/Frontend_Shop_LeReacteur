@@ -8,7 +8,6 @@ const CartContext = createContext<ICartContext | null>(null);
 const CartProvider = ({ children }: { children: ReactNode }) => {
   const cartReducer = (state: {products:ICartProduct[], total:number}, action: ICartReducerAction): {products:ICartProduct[], total:number} => {
     const { type, payload } = action;
-    console.log(payload);
     switch (type) {
       case "addProduct":
         if(payload){
@@ -47,7 +46,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
             return cartProduct;
           }
         }),
-        total: state.total + product.price,
+        total: Math.round((state.total + product.price) * 100) / 100,
       };
     } else {
       return {
