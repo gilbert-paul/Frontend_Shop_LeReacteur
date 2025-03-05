@@ -65,6 +65,12 @@ const Signup = () => {
                 onMouseUp={() => {
                   setPasswordIsVisible(false);
                 }}
+                onTouchStart={() => {
+                  setPasswordIsVisible(true);
+                }}
+                onTouchEnd={() => {
+                  setPasswordIsVisible(false);
+                }}
               >
                 {passwordIsVisible ? (
                   <FaEye color="#e67e22" />

@@ -25,8 +25,8 @@ const Product = () => {
 
   return (
     <div className="flex flex-col gap-4 bg-white">
-      <div className="flex">
-        <div className="w-[50%]">
+      <div className="flex flex-col lg:flex-row">
+        <div className="w-60 self-center border border-secondary m-4">
           <img
             className="object-contain w-full"
             src={data.thumbnail}
@@ -125,7 +125,7 @@ const Product = () => {
             })}
           </div>
           <div>
-            <div className="flex gap-2 w-fit border border-grey items-center">
+            <div className="flex gap-1 w-fit border border-grey items-center">
               <div className="p-2 bg-secondary border-r border-r-grey">
                 Quantity in my cart:
               </div>
